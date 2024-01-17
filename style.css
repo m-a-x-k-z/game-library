@@ -1,0 +1,166 @@
+:root {
+  --main-pad: 5px;
+  --main-mar: 10px;
+  --main-rad: 20px;
+
+  --main-text-color: #fffd;
+
+  --category-min: 400px;
+  --category-max: 1000px;
+  --category-unselected: #aaa5;
+  --category-selected: #aff5;
+  --category-shadow-unselected: #000b;
+  --category-shadow-selected: #07fb;
+
+  --game-width: 150px;
+  --game-height: 100px;
+  --game-wip: #fdd9;
+  --game-unselected: #ddd5;
+  --game-selected: #9df5;
+  --game-shadow-unselected: #000b;
+  --game-shadow-selected: #07fb;
+
+  --unselected-text: #000;
+  --highlight-text: #237;
+
+  --ease-rate: 300ms;
+}
+
+/* canvas mouse effects element */
+#effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: -1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+
+  color: var(--main-text-color);
+}
+
+/* the mouse effects canvas element */
+#effects {
+  border: 1px solid #000;
+}
+
+/* container for all the categories */
+#games-container {
+  min-width: var(--category-min);
+  max-width: var(--category-max);
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* each category containing all the game associated with it */
+.category {
+  width: 100%;
+  height: fit-content;
+
+  margin: 5px;
+
+  background: var(--category-unselected);
+  border-radius: var(--main-rad);
+  box-shadow: 0 0 10px var(--category-shadow-unselected);
+
+  display: block;
+  align-items: center;
+
+  transition: all var(--ease-rate) ease;
+}
+
+.category:hover {
+  background: var(--category-selected);
+
+  box-shadow: 0 0 14px var(--category-shadow-selected);
+
+  transition: all var(--ease-rate) ease;
+}
+
+.category>h2 {
+  color: var(--unselected-text);
+
+  transition: all var(--ease-rate) ease;
+}
+
+.category>h2:hover {
+  color: var(--highlight-text);
+
+  transition: all var(--ease-rate) ease;
+}
+
+/* section of a category to contain all the games */
+.game-container {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* controlling the styling of each game div */
+.game {
+  position: relative;
+  width: var(--game-width);
+  height: var(--game-height);
+
+  box-shadow: 0 0 7px var(--game-shadow-unselected);
+
+  margin: var(--main-mar);
+  padding: var(--main-pad);
+
+  background: var(--game-unselected);
+  border-radius: var(--main-rad);
+
+  display: block;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: all var(--ease-rate) ease;
+}
+
+.wip {
+  background: var(--game-wip);
+
+  transition: all var(--ease-rate) ease;
+}
+
+.game:hover {
+  background: var(--game-selected);
+
+  box-shadow: 0 0 7px var(--game-shadow-selected);
+
+  transition: all var(--ease-rate) ease;
+}
+
+.game>p {
+  position: absolute;
+  margin: 0;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--unselected-text);
+  font-weight: bold;
+
+  transition: all var(--ease-rate) ease;
+}
+
+.game:hover>p {
+  color: var(--highlight-text);
+
+  transition: all var(--ease-rate) ease;
+}
